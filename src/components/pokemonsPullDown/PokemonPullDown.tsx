@@ -32,7 +32,6 @@ export const PokemonPullDown = ({
   return (
     <>
       <select value={selected} onChange={(e) => setSelected(e.target.value)}>
-        <option value="---">---</option>;
         {pokemons.map((pokemon: any) => {
           return (
             <option value={pokemon.name} key={pokemon.id}>

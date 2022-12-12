@@ -141,8 +141,6 @@ const POKEAPI_URL = "https://pokeapi.co/api/v2/pokemon";
 
 // export default Home;
 
-import { ApolloProvider } from "@apollo/client";
-import { client } from "graphql/apolloClient";
 import { PokemonPullDown } from "components/pokemonsPullDown/PokemonPullDown";
 
 const Home = ({ pokemons }: any) => {
@@ -163,29 +161,27 @@ const Home = ({ pokemons }: any) => {
   };
 
   return (
-    <ApolloProvider client={client}>
-      <>
-        <PokemonPullDown
-          pokemons={pokemons}
-          pokemonsList={pokemonsList}
-          setPokemonsList={setPokemonsList}
-        />
-        <ul className="flex space-x-2">
-          {pokemonsList.map((pokemon: any) => {
-            return (
-              <li key={pokemon.name} className="w-fit">
-                <div className="flex">
-                  <span>{pokemon.name}</span>
-                  <button onClick={(e) => handleClear(e, pokemon.name)}>
-                    削除
-                  </button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </>
-    </ApolloProvider>
+    <>
+      <PokemonPullDown
+        pokemons={pokemons}
+        pokemonsList={pokemonsList}
+        setPokemonsList={setPokemonsList}
+      />
+      <ul className="flex space-x-2">
+        {pokemonsList.map((pokemon: any) => {
+          return (
+            <li key={pokemon.name} className="w-fit">
+              <div className="flex">
+                <span>{pokemon.name}</span>
+                <button onClick={(e) => handleClear(e, pokemon.name)}>
+                  削除
+                </button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 };
 
