@@ -1,2 +1,6 @@
 @tailwind components;
 @tailwind utilities;
+
+li {
+  list-style: none;
+}
