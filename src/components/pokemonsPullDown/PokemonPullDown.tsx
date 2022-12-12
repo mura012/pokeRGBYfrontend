@@ -1,40 +1,56 @@
 import { Button } from "@mantine/core";
-import { useState } from "react";
+import { PokemonData } from "mock/pokemons";
+import { useState, Dispatch, SetStateAction } from "react";
 import { ClickEvent } from "types/event";
+import { Pokemon, PokemonType } from "types/pokemon";
 
-export const PokemonPullDown = ({
-  pokemons,
-  pokemonsList,
-  setPokemonsList,
-}: any) => {
+type Props = {
+  pokemonsList: PokemonType;
+  setPokemonsList: Dispatch<SetStateAction<PokemonType>>;
+};
+
+export const PokemonPullDown = ({ pokemonsList, setPokemonsList }: Props) => {
   const [selected, setSelected] = useState("");
+  console.log(selected);
 
   const handleClick = (e: ClickEvent) => {
     e.preventDefault();
+
     if (pokemonsList.length >= 6) {
       alert("ポケモンは６匹までです");
       return;
     }
 
-    setPokemonsList((prev: any) => {
-      if (prev.some((item: any) => item.name === selected)) {
-        alert("同じポケモンは1匹まで");
-        return prev;
-      }
-      console.log(prev);
-      console.log(selected);
+    if (pokemonsList.some((pokemon) => pokemon.name === selected)) {
+      alert("同じポケモンは1匹まで");
+      return pokemonsList;
+    }
 
-      const newArray = [...prev, { name: selected }];
-      return newArray;
+    const selectPokemon = PokemonData.map((pokemon) => {
+      if (pokemon.name === selected) {
+        const newArray = [
+          ...pokemonsList,
+          {
+            number: pokemon.number,
+            name: pokemon.name,
+            typeA: pokemon.typeA,
+            typeB: pokemon.typeB,
+          },
+        ];
+        setPokemonsList(newArray);
+      }
     });
+
+    return selectPokemon;
   };
 
   return (
     <>
       <select value={selected} onChange={(e) => setSelected(e.target.value)}>
-        {pokemons.map((pokemon: any) => {
+        <option value="---">---</option>
+        {PokemonData.map((pokemon: Pokemon) => {
           return (
-            <option value={pokemon.name} key={pokemon.id}>
+            <option value={pokemon.name} key={pokemon.name}>
               {pokemon.name}
             </option>
           );
