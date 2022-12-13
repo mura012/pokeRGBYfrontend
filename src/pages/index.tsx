@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ClickEvent } from "types/event";
-
 import { PokemonPullDown } from "components/pokemonsPullDown/PokemonPullDown";
 import { Pokemon, PokemonType } from "types/pokemon";
 import { Badge, BadgeWrapper } from "components/badge";

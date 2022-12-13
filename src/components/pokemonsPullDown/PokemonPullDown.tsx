@@ -16,18 +16,13 @@ export const PokemonPullDown = ({ selected, setSelected }: Props) => {
         className="p-3"
       >
         <option value="---">---</option>
-        {PokemonData.map(({ name, number, typeA, typeB, point }: Pokemon) => {
+        {PokemonData.map(({ name, number, typeA, typeB }: Pokemon) => {
           return (
             <option value={name} key={number}>
-              <p>
-                {number < 10 ? "0" : ""}
-                {number}
-              </p>{" "}
-              <p>{name}</p>
-              {"　"}
-              {name.length === 4 ? "　" : ""}
-              {name.length === 3 ? "　　" : ""}
-              <p>{typeA}</p> <p>{typeB}</p>
+              {`${number}　`}
+              {name}
+              {`　${typeA} `}
+              {typeB}
             </option>
           );
         })}

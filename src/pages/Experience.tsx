@@ -80,7 +80,7 @@ const Experience = () => {
           onClick={() => {
             handleClick(selected, currentLevel, targetLevel);
           }}
-          className="absolute right-2 bottom-2 "
+          className="absolute right-2 bottom-2"
         >
           検索
         </Button>
