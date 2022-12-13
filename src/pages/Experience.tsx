@@ -53,7 +53,7 @@ const Experience = () => {
   return (
     <div>
       <Header />
-      <div className="relative m-auto mt-24 flex w-80 flex-col items-center justify-center bg-gray-100 p-3 shadow-md">
+      <div className="relative m-auto mt-24 flex w-96 flex-col items-center justify-center bg-gray-100 p-3 shadow-md">
         <div className="flex">
           <PokemonPullDown selected={selected} setSelected={setSelected} />
           <p>{`${levelType}万タイプ`}</p>
