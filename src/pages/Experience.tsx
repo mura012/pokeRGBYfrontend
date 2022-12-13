@@ -1,6 +1,6 @@
 import { Button, NumberInput } from "@mantine/core";
 import { Header } from "components/header";
-import { PokemonPullDown } from "components/pokemonsPullDown";
+import { PokemonSearch } from "components/pokemonsSearch";
 import { PokemonData } from "mock/pokemons";
 import { useState } from "react";
 
@@ -72,7 +72,7 @@ const Experience = () => {
       <Header />
       <div className="relative m-auto mt-24 flex w-96 flex-col items-center justify-center bg-gray-100 p-3 shadow-md">
         <div className="flex">
-          <PokemonPullDown selected={selected} setSelected={setSelected} />
+          <PokemonSearch selected={selected} setSelected={setSelected} />
           <p>{`${levelType}万タイプ`}</p>
         </div>
         <p>現在のレベル</p>

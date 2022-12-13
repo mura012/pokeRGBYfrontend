@@ -7,26 +7,30 @@ type Props = {
   setSelected: Dispatch<SetStateAction<string>>;
 };
 
-export const PokemonPullDown = ({ selected, setSelected }: Props) => {
+export const PokemonSearch = ({ selected, setSelected }: Props) => {
   return (
     <>
-      <select
+      <input
+        type="text"
+        list="example"
+        autoComplete="off"
         value={selected}
         onChange={(e) => setSelected(e.target.value)}
         className="p-3"
-      >
+      />
+
+      <datalist id="example">
         <option value="---">---</option>
         {PokemonData.map(({ name, number, typeA, typeB }: Pokemon) => {
           return (
             <option value={name} key={number}>
-              {`${number}　`}
               {name}
               {`　${typeA} `}
               {typeB}
             </option>
           );
         })}
-      </select>
+      </datalist>
     </>
   );
 };

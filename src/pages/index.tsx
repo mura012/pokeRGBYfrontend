@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ClickEvent } from "types/event";
-import { PokemonPullDown } from "components/pokemonsPullDown/PokemonPullDown";
+import { PokemonSearch } from "components/pokemonsSearch/PokemonSearch";
 import { Pokemon, PokemonType } from "types/pokemon";
 import { Badge, BadgeWrapper } from "components/badge";
 import { useTypeCheck } from "fooks/useTypeCheck";
@@ -55,7 +55,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <PokemonPullDown selected={selected} setSelected={setSelected} />
+      <PokemonSearch selected={selected} setSelected={setSelected} />
       <Button onClick={handleClick}>button</Button>
 
       <ul className="flex flex-wrap space-x-2">
