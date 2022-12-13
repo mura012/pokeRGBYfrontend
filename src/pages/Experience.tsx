@@ -41,6 +41,21 @@ const Experience = () => {
     if (experience === undefined) return;
     setLevelType(experience.point);
     const level = (point: number) => {
+      if (point === 105 && current === 1) {
+        const need = target ** 3 * 1.2 - 15 * target ** 2 + 100 * target - 140;
+        setNeedLevel(Math.floor(need));
+        return;
+      }
+      if (point === 105) {
+        const need =
+          target ** 3 * 1.2 -
+          15 * target ** 2 +
+          100 * target -
+          140 -
+          (current ** 3 * 1.2 - 15 * current ** 2 + 100 * current - 140);
+        setNeedLevel(Math.floor(need));
+        return;
+      }
       if (current === 1) {
         const need = target ** 3 * (point / 100);
         setNeedLevel(Math.floor(need));
