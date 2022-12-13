@@ -7,6 +7,7 @@ import { Badge, BadgeWrapper } from "components/badge";
 import { useTypeCheck } from "fooks/useTypeCheck";
 import { Button } from "@mantine/core";
 import { PokemonData } from "mock/pokemons";
+import { Header } from "components/header";
 
 const Home = () => {
   const [pokemonsList, setPokemonsList] = useState<PokemonType>([]);
@@ -54,6 +55,7 @@ const Home = () => {
 
   return (
     <>
+      <Header />
       <PokemonPullDown selected={selected} setSelected={setSelected} />
       <Button onClick={handleClick}>button</Button>
 

@@ -4,3 +4,18 @@
 li {
   list-style: none;
 }
+
+p {
+  margin: 6px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+a:active {
+  color: #000000;
+}
+a:focus {
+  outline: none;
+}
