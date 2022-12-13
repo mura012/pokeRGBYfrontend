@@ -1,49 +1,13 @@
-import { Button } from "@mantine/core";
 import { PokemonData } from "mock/pokemons";
-import { useState, Dispatch, SetStateAction } from "react";
-import { ClickEvent } from "types/event";
-import { Pokemon, PokemonType } from "types/pokemon";
+import { Dispatch, SetStateAction } from "react";
+import { Pokemon } from "types/pokemon";
 
 type Props = {
-  pokemonsList: PokemonType;
-  setPokemonsList: Dispatch<SetStateAction<PokemonType>>;
+  selected: string;
+  setSelected: Dispatch<SetStateAction<string>>;
 };
 
-export const PokemonPullDown = ({ pokemonsList, setPokemonsList }: Props) => {
-  const [selected, setSelected] = useState("");
-  console.log(selected);
-
-  const handleClick = (e: ClickEvent) => {
-    e.preventDefault();
-
-    if (pokemonsList.length >= 6) {
-      alert("ポケモンは６匹までです");
-      return;
-    }
-
-    if (pokemonsList.some((pokemon) => pokemon.name === selected)) {
-      alert("同じポケモンは1匹まで");
-      return pokemonsList;
-    }
-
-    const selectPokemon = PokemonData.map((pokemon) => {
-      if (pokemon.name === selected) {
-        const newArray = [
-          ...pokemonsList,
-          {
-            number: pokemon.number,
-            name: pokemon.name,
-            typeA: pokemon.typeA,
-            typeB: pokemon.typeB,
-          },
-        ];
-        setPokemonsList(newArray);
-      }
-    });
-
-    return selectPokemon;
-  };
-
+export const PokemonPullDown = ({ selected, setSelected }: Props) => {
   return (
     <>
       <select value={selected} onChange={(e) => setSelected(e.target.value)}>
@@ -56,7 +20,6 @@ export const PokemonPullDown = ({ pokemonsList, setPokemonsList }: Props) => {
           );
         })}
       </select>
-      <Button onClick={handleClick}>button</Button>
     </>
   );
 };
