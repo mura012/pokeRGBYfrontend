@@ -28,6 +28,7 @@ const Experience = () => {
     }
     if (target > 100) {
       setErrorMessage("目標のレベルを100以下にしてください");
+      return;
     }
     if (current > target || current === target) {
       setErrorMessage("現在のレベル<目標のレベルにして下さい");
@@ -37,6 +38,7 @@ const Experience = () => {
     const [experience] = PokemonData.filter(
       (pokemon) => pokemon.name === targetPokemon
     );
+    if (experience === undefined) return;
     setLevelType(experience.point);
     const level = (point: number) => {
       if (current === 1) {
