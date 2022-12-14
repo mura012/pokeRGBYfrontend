@@ -1,6 +1,5 @@
 export const useTypeCheck = () => {
   const typeCheck = (type: string | undefined) => {
-    console.log(type);
     if (type === undefined) return;
     if (type === "ノーマル") return "bg-gray-300";
     if (type === "ほのお") return "bg-red-500";

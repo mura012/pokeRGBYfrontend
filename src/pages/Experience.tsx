@@ -19,7 +19,7 @@ const Experience = () => {
     target: number
   ) => {
     setErrorMessage("");
-    if (targetPokemon === "---") {
+    if (targetPokemon === "---" || targetPokemon === "") {
       setErrorMessage("ポケモンを選択してください");
       return;
     }
