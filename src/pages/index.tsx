@@ -7,6 +7,7 @@ import { useTypeCheck } from "fooks/useTypeCheck";
 import { Button } from "@mantine/core";
 import { PokemonData } from "mock/pokemons";
 import { Header } from "components/header";
+import Head from "next/head";
 
 const Home = () => {
   const [pokemonsList, setPokemonsList] = useState<PokemonType>([]);
@@ -54,6 +55,9 @@ const Home = () => {
 
   return (
     <>
+      <Head>
+        <title>パーティー</title>
+      </Head>
       <Header />
       <PokemonSearch selected={selected} setSelected={setSelected} />
       <Button onClick={handleClick}>button</Button>
