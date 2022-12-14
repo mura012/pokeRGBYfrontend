@@ -1,4 +1,3 @@
-import { Button } from "@mantine/core";
 import { PokemonData } from "mock/pokemons";
 import { Dispatch, SetStateAction } from "react";
 import { Pokemon } from "types/pokemon";
@@ -31,15 +30,15 @@ export const PokemonSearch = ({ selected, setSelected }: Props) => {
             );
           })}
         </datalist>
-        <Button
+        <button
           onClick={(e) => {
             e.preventDefault();
             setSelected("");
           }}
-          className="absolute right-1 top-1 bg-white text-black hover:bg-white"
+          className="absolute right-2 top-4 cursor-pointer border-0 bg-white text-black hover:bg-white"
         >
           ×
-        </Button>
+        </button>
       </div>
     </>
   );

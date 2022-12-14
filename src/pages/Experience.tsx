@@ -13,7 +13,17 @@ const Experience = () => {
   const [needLevel, setNeedLevel] = useState<number>(0);
   const [levelType, setLevelType] = useState<number>(0);
 
-  const handleClick = (
+  const handleEvolution = (select: string) => {
+    const [level] = PokemonData.filter((pokemon) => pokemon.name === select);
+
+    if (level.evolutionLevel === undefined) {
+      alert("このポケモンは進化しないかレベルアップによる進化をしません。");
+      return;
+    }
+    setTargetLevel(level.evolutionLevel);
+  };
+
+  const handleSearch = (
     targetPokemon: string,
     current: number,
     target: number
@@ -77,7 +87,7 @@ const Experience = () => {
       <div className="relative m-auto mt-24 flex w-96 flex-col items-center justify-center bg-gray-100 p-3 shadow-md">
         <div className="flex">
           <PokemonSearch selected={selected} setSelected={setSelected} />
-          <p>{`${levelType}万タイプ`}</p>
+          <p className="flex items-center">{`${levelType}万タイプ`}</p>
         </div>
         <p>現在のレベル</p>
         <NumberInput
@@ -89,17 +99,27 @@ const Experience = () => {
           }}
         />
         <p>目標のレベル</p>
-        <NumberInput
-          placeholder="2~100"
-          type="number"
-          value={targetLevel}
-          onChange={(e: number) => {
-            setTargetLevel(e);
-          }}
-        />
+        <div className="relative">
+          <NumberInput
+            placeholder="2~100"
+            type="number"
+            value={targetLevel}
+            onChange={(e: number) => {
+              setTargetLevel(e);
+            }}
+          />
+          <button
+            onClick={() => {
+              handleEvolution(selected);
+            }}
+            className="absolute right-7 top-3 cursor-pointer border-0 bg-white p-0 text-xs font-semibold text-black hover:bg-white"
+          >
+            進化レベル
+          </button>
+        </div>
         <Button
           onClick={() => {
-            handleClick(selected, currentLevel, targetLevel);
+            handleSearch(selected, currentLevel, targetLevel);
           }}
           className="absolute right-2 bottom-2"
         >
