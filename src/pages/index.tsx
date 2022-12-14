@@ -59,10 +59,22 @@ const Home = () => {
         <title>パーティー</title>
       </Head>
       <Header />
-      <PokemonSearch selected={selected} setSelected={setSelected} />
-      <Button onClick={handleClick}>button</Button>
+      <div className="flex">
+        <PokemonSearch selected={selected} setSelected={setSelected} />
+        <Button onClick={handleClick}>button</Button>
+      </div>
 
-      <ul className="flex flex-wrap space-x-2">
+      <ul className="flex flex-wrap space-x-2 border border-solid  border-black p-2">
+        {pokemonsList.length === 0 ? (
+          <li
+            className="flex items-center border border-solid border-black p-2 shadow-lg"
+            style={{ minHeight: "74px" }}
+          >
+            <span>ここに追加</span>
+          </li>
+        ) : (
+          ""
+        )}
         {pokemonsList.map((pokemon: Pokemon) => {
           return (
             <li
@@ -87,6 +99,7 @@ const Home = () => {
           );
         })}
       </ul>
+      <h1>test</h1>
     </>
   );
 };
