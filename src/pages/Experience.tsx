@@ -87,7 +87,12 @@ const Experience = () => {
       <div className="relative m-auto mt-24 flex w-96 flex-col items-center justify-center bg-gray-100 p-3 shadow-md">
         <div className="flex">
           <PokemonSearch selected={selected} setSelected={setSelected} />
-          <p className="flex items-center">{`${levelType}万タイプ`}</p>
+          <input
+            className="flex w-6 items-center text-right"
+            value={levelType}
+            disabled
+          />
+          <p>万タイプ</p>
         </div>
         <p>現在のレベル</p>
         <NumberInput
