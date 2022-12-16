@@ -3,7 +3,7 @@ import { Header } from "components/header";
 import { PokemonSearch } from "components/pokemonsSearch";
 import { PokemonData } from "mock/pokemons";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Experience = () => {
   const [selected, setSelected] = useState("");
@@ -12,6 +12,13 @@ const Experience = () => {
   const [targetLevel, setTargetLevel] = useState<number>(1);
   const [needLevel, setNeedLevel] = useState<number>(0);
   const [levelType, setLevelType] = useState<number>(0);
+
+  useEffect(() => {
+    if (currentLevel >= targetLevel) {
+      console.log("ookii");
+      setTargetLevel(currentLevel + 1);
+    }
+  }, [currentLevel]);
 
   const handleEvolution = (select: string) => {
     const [level] = PokemonData.filter((pokemon) => pokemon.name === select);
