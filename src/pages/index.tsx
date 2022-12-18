@@ -14,15 +14,7 @@ const Home = () => {
   const [selected, setSelected] = useState("");
 
   const { typeCheck } = useTypeCheck();
-  const handleClear = (e: ClickEvent, name: string) => {
-    e.preventDefault();
-
-    const result = pokemonsList.filter(
-      (pokemon: Pokemon) => pokemon.name !== name
-    );
-    setPokemonsList(result);
-  };
-  const handleClick = (e: ClickEvent) => {
+  const handleAdd = (e: ClickEvent) => {
     e.preventDefault();
 
     if (pokemonsList.length >= 6) {
@@ -40,17 +32,47 @@ const Home = () => {
         const newArray = [
           ...pokemonsList,
           {
-            number: pokemon.number,
-            name: pokemon.name,
-            typeA: pokemon.typeA,
-            typeB: pokemon.typeB,
+            ...pokemon,
           },
         ];
         setPokemonsList(newArray);
       }
     });
-
     return selectPokemon;
+  };
+  const handleEvolution = (e: ClickEvent, target: string) => {
+    e.preventDefault();
+
+    const [result] = pokemonsList.filter(
+      (pokemon: Pokemon) => pokemon.name === target
+    );
+
+    if (result.afterEvolution === undefined) {
+      alert("このポケモンは進化しません");
+      return;
+    }
+    const [evolutionPokemon] = PokemonData.filter(
+      (pokemon: Pokemon) => pokemon.name === result.afterEvolution
+    );
+
+    const newArray = [
+      ...pokemonsList,
+      {
+        ...evolutionPokemon,
+      },
+    ].filter((pokemon) => pokemon.name !== result.name);
+
+    setPokemonsList(newArray);
+  };
+
+  const handleClear = (e: ClickEvent, target: string) => {
+    e.preventDefault();
+
+    const result = pokemonsList.filter(
+      (pokemon: Pokemon) => pokemon.name !== target
+    );
+
+    setPokemonsList(result);
   };
 
   return (
@@ -61,10 +83,9 @@ const Home = () => {
       <Header />
       <div className="flex">
         <PokemonSearch selected={selected} setSelected={setSelected} />
-        <Button onClick={handleClick}>button</Button>
+        <Button onClick={handleAdd}>button</Button>
       </div>
-
-      <ul className="flex flex-wrap space-x-2 border border-solid  border-black p-2">
+      <ul className="flex flex-wrap border  border-solid border-black p-2">
         {pokemonsList.length === 0 ? (
           <li
             className="flex items-center border border-solid border-black p-2 shadow-lg"
@@ -73,31 +94,40 @@ const Home = () => {
             <span>ここに追加</span>
           </li>
         ) : (
-          ""
+          pokemonsList.map((pokemon: Pokemon) => {
+            return (
+              <li
+                key={pokemon.number}
+                className="m-1 min-w-[116px] border border-solid border-black p-2 shadow-lg"
+              >
+                <div className="flex flex-col items-center justify-center">
+                  <span className="text-sm">{pokemon.name}</span>
+                  <BadgeWrapper>
+                    <Badge color={typeCheck(pokemon.typeA)}>
+                      {pokemon.typeA}
+                    </Badge>
+                    {pokemon.typeB && (
+                      <Badge color={typeCheck(pokemon.typeB)}>
+                        {pokemon.typeB}
+                      </Badge>
+                    )}
+                  </BadgeWrapper>
+                  <div>
+                    <button
+                      onClick={(e) => handleEvolution(e, pokemon.name)}
+                      className="mr-1 mt-1"
+                    >
+                      進化
+                    </button>
+                    <button onClick={(e) => handleClear(e, pokemon.name)}>
+                      削除
+                    </button>
+                  </div>
+                </div>
+              </li>
+            );
+          })
         )}
-        {pokemonsList.map((pokemon: Pokemon) => {
-          return (
-            <li
-              key={pokemon.number}
-              className="border border-solid  border-black p-2 shadow-lg"
-            >
-              <div>
-                <span className="text-sm">{pokemon.name}</span>
-                <BadgeWrapper>
-                  <Badge color={typeCheck(pokemon.typeA)}>
-                    {pokemon.typeA}
-                  </Badge>
-                  <Badge color={typeCheck(pokemon.typeB)}>
-                    {pokemon.typeB}
-                  </Badge>
-                </BadgeWrapper>
-                <button onClick={(e) => handleClear(e, pokemon.name)}>
-                  削除
-                </button>
-              </div>
-            </li>
-          );
-        })}
       </ul>
       <h1>test</h1>
     </>

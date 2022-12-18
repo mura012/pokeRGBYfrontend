@@ -5,6 +5,7 @@ export type Pokemon = {
   typeB?: string;
   point: number;
   evolutionLevel?: number;
+  afterEvolution?: string;
 };
 
 export type PokemonType = Pokemons[] | [];

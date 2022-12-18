@@ -8,6 +8,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "どく",
     point: 105,
     evolutionLevel: 16,
+    afterEvolution: "フシギソウ",
   },
   {
     number: 2,
@@ -16,6 +17,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "どく",
     point: 105,
     evolutionLevel: 32,
+    afterEvolution: "フシギバナ",
   },
   {
     number: 3,
@@ -30,6 +32,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "ほのお",
     point: 105,
     evolutionLevel: 16,
+    afterEvolution: "リザード",
   },
   {
     number: 5,
@@ -37,6 +40,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "ほのお",
     point: 105,
     evolutionLevel: 36,
+    afterEvolution: "リザードン",
   },
   {
     number: 6,
@@ -51,6 +55,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "みず",
     point: 105,
     evolutionLevel: 16,
+    afterEvolution: "カメール",
   },
   {
     number: 8,
@@ -58,6 +63,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "みず",
     point: 105,
     evolutionLevel: 36,
+    afterEvolution: "カメックス",
   },
   { number: 9, name: "カメックス", typeA: "みず", point: 105 },
   {
@@ -66,6 +72,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "むし",
     point: 100,
     evolutionLevel: 7,
+    afterEvolution: "トランセル",
   },
   {
     number: 11,
@@ -73,6 +80,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "むし",
     point: 100,
     evolutionLevel: 10,
+    afterEvolution: "バタフリー",
   },
   {
     number: 12,
@@ -88,6 +96,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "むし",
     point: 100,
     evolutionLevel: 7,
+    afterEvolution: "コクーン",
   },
   {
     number: 14,
@@ -96,6 +105,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "むし",
     point: 100,
     evolutionLevel: 10,
+    afterEvolution: "スピアー",
   },
   {
     number: 15,
@@ -111,6 +121,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "ノーマル",
     point: 105,
     evolutionLevel: 18,
+    afterEvolution: "ピジョン",
   },
   {
     number: 17,
@@ -119,6 +130,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "ノーマル",
     point: 105,
     evolutionLevel: 36,
+    afterEvolution: "ピジョット",
   },
   {
     number: 18,
@@ -133,6 +145,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "ノーマル",
     point: 100,
     evolutionLevel: 20,
+    afterEvolution: "ラッタ",
   },
   { number: 20, name: "ラッタ", typeA: "ノーマル", point: 100 },
   {
@@ -142,6 +155,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "ノーマル",
     point: 100,
     evolutionLevel: 20,
+    afterEvolution: "オニドリル",
   },
   {
     number: 22,
@@ -156,21 +170,24 @@ export const PokemonData: Pokemon[] = [
     typeA: "どく",
     point: 100,
     evolutionLevel: 22,
+    afterEvolution: "アーボック",
   },
   { number: 24, name: "アーボック", typeA: "どく", point: 100 },
   {
     number: 25,
     name: "ピカチュウ",
-    typeA: "どく",
+    typeA: "でんき",
     point: 100,
+    afterEvolution: "ライチュウ",
   },
-  { number: 26, name: "ライチュウ", typeA: "どく", point: 100 },
+  { number: 26, name: "ライチュウ", typeA: "でんき", point: 100 },
   {
     number: 27,
     name: "サンド",
     typeA: "じめん",
     point: 100,
     evolutionLevel: 22,
+    afterEvolution: "サンドパン",
   },
   { number: 28, name: "サンドパン", typeA: "じめん", point: 100 },
   {
@@ -179,12 +196,14 @@ export const PokemonData: Pokemon[] = [
     typeA: "どく",
     point: 105,
     evolutionLevel: 16,
+    afterEvolution: "ニドリーナ",
   },
   {
     number: 30,
     name: "ニドリーナ",
     typeA: "どく",
     point: 105,
+    afterEvolution: "ニドクイン",
   },
   {
     number: 31,
@@ -199,12 +218,14 @@ export const PokemonData: Pokemon[] = [
     typeA: "どく",
     point: 105,
     evolutionLevel: 16,
+    afterEvolution: "ニドリーノ",
   },
   {
     number: 33,
     name: "ニドリーノ",
     typeA: "どく",
     point: 105,
+    afterEvolution: "ニドキング",
   },
   {
     number: 34,
@@ -218,6 +239,7 @@ export const PokemonData: Pokemon[] = [
     name: "ピッピ",
     typeA: "ノーマル",
     point: 80,
+    afterEvolution: "ピクシー",
   },
   { number: 36, name: "ピクシー", typeA: "ノーマル", point: 80 },
   {
@@ -225,6 +247,7 @@ export const PokemonData: Pokemon[] = [
     name: "ロコン",
     typeA: "ほのお",
     point: 100,
+    afterEvolution: "キュウコン",
   },
   { number: 38, name: "キュウコン", typeA: "ほのお", point: 100 },
   {
@@ -232,6 +255,7 @@ export const PokemonData: Pokemon[] = [
     name: "プリン",
     typeA: "ノーマル",
     point: 80,
+    afterEvolution: "プクリン",
   },
   { number: 40, name: "プクリン", typeA: "ノーマル", point: 80 },
   {
@@ -241,6 +265,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "ひこう",
     point: 100,
     evolutionLevel: 22,
+    afterEvolution: "ゴルバット",
   },
   {
     number: 42,
@@ -256,6 +281,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "どく",
     point: 105,
     evolutionLevel: 21,
+    afterEvolution: "クサイハナ",
   },
   {
     number: 44,
@@ -263,6 +289,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "くさ",
     typeB: "どく",
     point: 105,
+    afterEvolution: "ラフレシア",
   },
   {
     number: 45,
@@ -278,6 +305,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "むし",
     point: 100,
     evolutionLevel: 24,
+    afterEvolution: "パラセクト",
   },
   {
     number: 47,
@@ -293,6 +321,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "むし",
     point: 100,
     evolutionLevel: 31,
+    afterEvolution: "モルフォン",
   },
   {
     number: 49,
@@ -307,6 +336,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "じめん",
     point: 100,
     evolutionLevel: 26,
+    afterEvolution: "ダグトリオ",
   },
   { number: 51, name: "ダグトリオ", typeA: "じめん", point: 100 },
   {
@@ -315,6 +345,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "ノーマル",
     point: 100,
     evolutionLevel: 28,
+    afterEvolution: "ペルシアン",
   },
   { number: 53, name: "ペルシアン", typeA: "ノーマル", point: 100 },
   {
@@ -323,6 +354,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "みず",
     point: 100,
     evolutionLevel: 33,
+    afterEvolution: "ゴルダック",
   },
   { number: 55, name: "ゴルダック", typeA: "みず", point: 100 },
   {
@@ -331,6 +363,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "かくとう",
     point: 100,
     evolutionLevel: 28,
+    afterEvolution: "オコリザル",
   },
   { number: 57, name: "オコリザル", typeA: "かくとう", point: 100 },
   {
@@ -338,6 +371,7 @@ export const PokemonData: Pokemon[] = [
     name: "ガーディ",
     typeA: "かくとう",
     point: 125,
+    afterEvolution: "ウインディ",
   },
   { number: 59, name: "ウインディ", typeA: "かくとう", point: 125 },
   {
@@ -346,12 +380,14 @@ export const PokemonData: Pokemon[] = [
     typeA: "みず",
     point: 105,
     evolutionLevel: 25,
+    afterEvolution: "ニョロゾ",
   },
   {
     number: 61,
     name: "ニョロゾ",
     typeA: "みず",
     point: 105,
+    afterEvolution: "ニョロボン",
   },
   {
     number: 62,
@@ -366,12 +402,14 @@ export const PokemonData: Pokemon[] = [
     typeA: "エスパー",
     point: 105,
     evolutionLevel: 16,
+    afterEvolution: "ユンゲラー",
   },
   {
     number: 64,
     name: "ユンゲラー",
     typeA: "エスパー",
     point: 105,
+    afterEvolution: "フーディン",
   },
   { number: 65, name: "フーディン", typeA: "エスパー", point: 105 },
   {
@@ -380,12 +418,14 @@ export const PokemonData: Pokemon[] = [
     typeA: "かくとう",
     point: 105,
     evolutionLevel: 28,
+    afterEvolution: "ゴーリキー",
   },
   {
     number: 67,
     name: "ゴーリキー",
     typeA: "かくとう",
     point: 105,
+    afterEvolution: "カイリキー",
   },
   { number: 68, name: "カイリキー", typeA: "かくとう", point: 105 },
   {
@@ -395,6 +435,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "どく",
     point: 105,
     evolutionLevel: 21,
+    afterEvolution: "ウツドン",
   },
   {
     number: 70,
@@ -402,6 +443,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "くさ",
     typeB: "どく",
     point: 105,
+    afterEvolution: "ウツボット",
   },
   {
     number: 71,
@@ -417,6 +459,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "みず",
     point: 125,
     evolutionLevel: 30,
+    afterEvolution: "メノクラゲ",
   },
   {
     number: 73,
@@ -432,6 +475,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "じめん",
     point: 105,
     evolutionLevel: 25,
+    afterEvolution: "ゴローン",
   },
   {
     number: 75,
@@ -439,6 +483,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "いわ",
     typeB: "じめん",
     point: 105,
+    afterEvolution: "ゴローニャ",
   },
   {
     number: 76,
@@ -453,6 +498,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "ほのお",
     point: 100,
     evolutionLevel: 40,
+    afterEvolution: "ギャロップ",
   },
   { number: 78, name: "ギャロップ", typeA: "ほのお", point: 100 },
   {
@@ -462,6 +508,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "エスパー",
     point: 100,
     evolutionLevel: 37,
+    afterEvolution: "ヤドラン",
   },
   {
     number: 80,
@@ -476,6 +523,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "でんき",
     point: 100,
     evolutionLevel: 30,
+    afterEvolution: "レアコイル",
   },
   { number: 82, name: "レアコイル", typeA: "でんき", point: 100 },
   {
@@ -492,6 +540,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "ひこう",
     point: 100,
     evolutionLevel: 31,
+    afterEvolution: "ドードリオ",
   },
   {
     number: 85,
@@ -506,6 +555,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "みず",
     point: 100,
     evolutionLevel: 34,
+    afterEvolution: "ジュゴン",
   },
   {
     number: 87,
@@ -520,6 +570,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "どく",
     point: 100,
     evolutionLevel: 38,
+    afterEvolution: "ベトベトン",
   },
   { number: 89, name: "ベトベトン", typeA: "どく", point: 100 },
   {
@@ -527,6 +578,7 @@ export const PokemonData: Pokemon[] = [
     name: "シェルダー",
     typeA: "みず",
     point: 125,
+    afterEvolution: "パルシェン",
   },
   {
     number: 91,
@@ -542,6 +594,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "どく",
     point: 105,
     evolutionLevel: 25,
+    afterEvolution: "ゴースト",
   },
   {
     number: 93,
@@ -549,6 +602,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "ゴースト",
     typeB: "どく",
     point: 105,
+    afterEvolution: "ゲンガー",
   },
   {
     number: 94,
@@ -570,6 +624,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "エスパー",
     point: 100,
     evolutionLevel: 26,
+    afterEvolution: "スリーパー",
   },
   { number: 97, name: "スリーパー", typeA: "エスパー", point: 100 },
   {
@@ -578,6 +633,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "みず",
     point: 100,
     evolutionLevel: 28,
+    afterEvolution: "キングラー",
   },
   { number: 99, name: "キングラー", typeA: "みず", point: 100 },
   {
@@ -586,6 +642,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "でんき",
     point: 100,
     evolutionLevel: 30,
+    afterEvolution: "マルマイン",
   },
   { number: 101, name: "マルマイン", typeA: "でんき", point: 100 },
   {
@@ -594,6 +651,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "くさ",
     typeB: "エスパー",
     point: 125,
+    afterEvolution: "ナッシー",
   },
   {
     number: 103,
@@ -608,6 +666,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "じめん",
     point: 100,
     evolutionLevel: 28,
+    afterEvolution: "ガラガラ",
   },
   { number: 105, name: "ガラガラ", typeA: "じめん", point: 100 },
   {
@@ -634,6 +693,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "どく",
     point: 100,
     evolutionLevel: 35,
+    afterEvolution: "マタドガス",
   },
   { number: 110, name: "マタドガス", typeA: "どく", point: 100 },
   {
@@ -643,6 +703,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "いわ",
     point: 125,
     evolutionLevel: 42,
+    afterEvolution: "サイドン",
   },
   {
     number: 112,
@@ -660,6 +721,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "みず",
     point: 100,
     evolutionLevel: 32,
+    afterEvolution: "シードラ",
   },
   { number: 117, name: "シードラ", typeA: "みず", point: 100 },
   {
@@ -668,6 +730,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "みず",
     point: 100,
     evolutionLevel: 33,
+    afterEvolution: "アズマオウ",
   },
   { number: 119, name: "アズマオウ", typeA: "みず", point: 100 },
   {
@@ -675,6 +738,7 @@ export const PokemonData: Pokemon[] = [
     name: "ヒトデマン",
     typeA: "みず",
     point: 125,
+    afterEvolution: "スターミー",
   },
   { number: 121, name: "スターミー", typeA: "みず", point: 125 },
   {
@@ -712,6 +776,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "みず",
     point: 125,
     evolutionLevel: 20,
+    afterEvolution: "ギャラドス",
   },
   {
     number: 130,
@@ -740,6 +805,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "みず",
     point: 100,
     evolutionLevel: 40,
+    afterEvolution: "オムスター",
   },
   {
     number: 139,
@@ -755,6 +821,7 @@ export const PokemonData: Pokemon[] = [
     typeB: "みず",
     point: 100,
     evolutionLevel: 40,
+    afterEvolution: "カブトプス",
   },
   {
     number: 141,
@@ -798,6 +865,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "ドラゴン",
     point: 125,
     evolutionLevel: 30,
+    afterEvolution: "ハクリュー",
   },
   {
     number: 148,
@@ -805,6 +873,7 @@ export const PokemonData: Pokemon[] = [
     typeA: "ドラゴン",
     point: 125,
     evolutionLevel: 55,
+    afterEvolution: "カイリュー",
   },
   {
     number: 149,
