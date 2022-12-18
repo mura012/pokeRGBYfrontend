@@ -15,7 +15,6 @@ const Experience = () => {
 
   useEffect(() => {
     if (currentLevel >= targetLevel) {
-      console.log("ookii");
       setTargetLevel(currentLevel + 1);
     }
   }, [currentLevel]);
