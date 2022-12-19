@@ -35,7 +35,7 @@ export const PokemonSearch = ({ selected, setSelected }: Props) => {
             e.preventDefault();
             setSelected("");
           }}
-          className="absolute right-2 top-4 cursor-pointer border-0 bg-white text-black hover:bg-white"
+          className="absolute right-2 top-2 cursor-pointer border-0 bg-white text-xl text-black hover:bg-white"
         >
           ×
         </button>
