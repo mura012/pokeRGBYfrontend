@@ -5,7 +5,6 @@ import Head from "next/head";
 import React from "react";
 
 const Qa = ({ data }: any) => {
-  console.log("dataのログ", data.contents);
 
   return (
     <div>
