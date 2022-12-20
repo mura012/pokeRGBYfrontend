@@ -108,6 +108,8 @@ const Experience = () => {
           onChange={(e: number) => {
             setCurrentLevel(e);
           }}
+          stepHoldDelay={500}
+          stepHoldInterval={100}
         />
         <p>目標のレベル</p>
         <div className="relative">
@@ -118,6 +120,8 @@ const Experience = () => {
             onChange={(e: number) => {
               setTargetLevel(e);
             }}
+            stepHoldDelay={500}
+            stepHoldInterval={100}
           />
           <button
             onClick={() => {
