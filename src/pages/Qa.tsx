@@ -4,7 +4,7 @@ import { client } from "libs/client";
 import Head from "next/head";
 import React from "react";
 
-const Qanda = ({ data }: any) => {
+const Qa = ({ data }: any) => {
   return (
     <div>
       <Head>
@@ -42,4 +42,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default Qanda;
+export default Qa;

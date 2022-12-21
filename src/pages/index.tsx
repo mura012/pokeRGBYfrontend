@@ -47,6 +47,13 @@ const Home = () => {
       (pokemon: Pokemon) => pokemon.name === target
     );
 
+    if (
+      pokemonsList.some((pokemon) => pokemon.name === result.afterEvolution)
+    ) {
+      alert("このポケモンの進化後はすでにパーティーに入っています");
+      return;
+    }
+
     if (result.afterEvolution === undefined) {
       alert("このポケモンは進化しません");
       return;
@@ -129,6 +136,7 @@ const Home = () => {
           })
         )}
       </ul>
+
       <h1>test</h1>
     </>
   );

@@ -4,7 +4,7 @@ export const Header = () => {
   const links = [
     { id: 1, href: "/", label: "タイプ" },
     { id: 2, href: "/Experience", label: "経験値" },
-    { id: 3, href: "/Qanda", label: "Q&A" },
+    { id: 3, href: "/Qa", label: "Q&A" },
   ];
   return (
     <header className="flex items-center justify-around border-0 border-b border-solid font-bold">
