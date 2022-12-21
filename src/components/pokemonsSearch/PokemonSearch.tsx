@@ -20,7 +20,6 @@ export const PokemonSearch = ({ selected, setSelected }: Props) => {
       />
       <div className="relative">
         <datalist id="example">
-          <option value="---">---</option>
           {PokemonData.map(({ name, number, typeA, typeB }: Pokemon) => {
             return (
               <option value={name} key={number}>

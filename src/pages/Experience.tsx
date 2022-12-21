@@ -20,7 +20,13 @@ const Experience = () => {
   }, [currentLevel]);
 
   const handleEvolution = (select: string) => {
+    console.log(select);
     const [level] = PokemonData.filter((pokemon) => pokemon.name === select);
+
+    if (select === "") {
+      alert("ポケモンを選択してください。");
+      return;
+    }
 
     if (level.evolutionLevel === undefined) {
       alert("このポケモンは進化しないかレベルアップによる進化をしません。");
@@ -35,14 +41,11 @@ const Experience = () => {
     target: number
   ) => {
     setErrorMessage("");
-    if (targetPokemon === "---" || targetPokemon === "") {
+    if (targetPokemon === "") {
       setErrorMessage("ポケモンを選択してください");
       return;
     }
-    if (current <= 0) {
-      setErrorMessage("現在のレベルを1以上にしてください");
-      return;
-    }
+
     if (target > 100) {
       setErrorMessage("目標のレベルを100以下にしてください");
       return;
@@ -108,6 +111,7 @@ const Experience = () => {
           onChange={(e: number) => {
             setCurrentLevel(e);
           }}
+          min={1}
           stepHoldDelay={500}
           stepHoldInterval={100}
         />
@@ -120,6 +124,7 @@ const Experience = () => {
             onChange={(e: number) => {
               setTargetLevel(e);
             }}
+            min={1}
             stepHoldDelay={500}
             stepHoldInterval={100}
           />
