@@ -140,12 +140,12 @@ const Home = () => {
         <title>パーティー</title>
       </Head>
       <Header />
-      <div className="flex flex-col items-center justify-center">
+      <div className="m-auto mt-2 flex w-5/6 flex-col justify-center">
         <div className="flex">
           <PokemonSearch selected={selected} setSelected={setSelected} />
           <button onClick={handleAdd}>追加</button>
         </div>
-        <ul className="m-auto mt-3  flex max-w-4xl flex-wrap border border-solid border-black p-2">
+        <ul className="my-2 flex max-w-4xl flex-wrap border border-solid border-black p-2">
           {pokemonsList.length === 0 ? (
             <li
               className="flex items-center border border-solid border-black p-2 shadow-lg"
@@ -176,6 +176,7 @@ const Home = () => {
                       {pokemon.afterEvolution ? (
                         <button
                           onClick={(e) => handleEvolution(e, pokemon.name)}
+                          className="mr-1"
                         >
                           進化
                         </button>
@@ -191,7 +192,7 @@ const Home = () => {
           )}
         </ul>
 
-        <p className="flex font-bold">含まれているタイプ</p>
+        <p className="flex justify-center font-bold">含まれているタイプ</p>
         <div className="flex flex-wrap justify-center space-x-1">
           {partyTypes.map((type) => {
             return type.isIn ? (
