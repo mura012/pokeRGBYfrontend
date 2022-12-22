@@ -140,11 +140,11 @@ const Home = () => {
         <title>パーティー</title>
       </Head>
       <Header />
-      <div className="m-auto flex w-4/5">
+      <div className="m-auto flex w-1/2">
         <PokemonSearch selected={selected} setSelected={setSelected} />
         <button onClick={handleAdd}>追加</button>
       </div>
-      <ul className="m-auto my-2 flex w-4/5 flex-wrap border border-solid border-black p-2">
+      <ul className="m-auto my-2 flex w-1/2 flex-wrap border border-solid border-black p-2">
         {pokemonsList.length === 0 ? (
           <li
             className="flex items-center border border-solid border-black p-2 shadow-lg"
