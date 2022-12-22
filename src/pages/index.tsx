@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ClickEvent } from "types/event";
 import { PokemonSearch } from "components/pokemonsSearch/PokemonSearch";
 import { Pokemon, PokemonType } from "types/pokemon";
@@ -9,8 +9,31 @@ import { PokemonData } from "mock/pokemons";
 import { Header } from "components/header";
 import Head from "next/head";
 
+type Types = {
+  type: string;
+  isIn: boolean;
+};
+const AllTypes: Types[] = [
+  { type: "ノーマル", isIn: false },
+  { type: "ほのお", isIn: false },
+  { type: "みず", isIn: false },
+  { type: "でんき", isIn: false },
+  { type: "くさ", isIn: false },
+  { type: "エスパー", isIn: false },
+  { type: "かくとう", isIn: false },
+  { type: "どく", isIn: false },
+  { type: "じめん", isIn: false },
+  { type: "ひこう", isIn: false },
+  { type: "ドラゴン", isIn: false },
+  { type: "むし", isIn: false },
+  { type: "いわ", isIn: false },
+  { type: "ゴースト", isIn: false },
+  { type: "こおり", isIn: false },
+];
+
 const Home = () => {
   const [pokemonsList, setPokemonsList] = useState<PokemonType>([]);
+  const [partyTypes, setPartyTypes] = useState(AllTypes);
   const [selected, setSelected] = useState("");
 
   const { typeCheck } = useTypeCheck();
@@ -27,7 +50,7 @@ const Home = () => {
       return pokemonsList;
     }
 
-    const selectPokemon = PokemonData.map((pokemon) => {
+    PokemonData.map((pokemon) => {
       if (pokemon.name === selected) {
         const newArray = [
           ...pokemonsList,
@@ -38,7 +61,7 @@ const Home = () => {
         setPokemonsList(newArray);
       }
     });
-    return selectPokemon;
+    setSelected("");
   };
   const handleEvolution = (e: ClickEvent, target: string) => {
     e.preventDefault();
@@ -78,9 +101,43 @@ const Home = () => {
     const result = pokemonsList.filter(
       (pokemon: Pokemon) => pokemon.name !== target
     );
-
     setPokemonsList(result);
+
+    if (result.length === 0) {
+      setPartyTypes((prev) => {
+        return prev.map((type) => {
+          return { ...type, isIn: false };
+        });
+      });
+    }
+    result.map((party) => {
+      setPartyTypes((prev) => {
+        return prev.map((type) => {
+          if (type.type !== party.typeA) {
+            return { ...type, isIn: false };
+          }
+          return type;
+        });
+      });
+    });
   };
+
+  useEffect(() => {
+    const partyTypeCheck = (AB: "typeA" | "typeB") => {
+      pokemonsList.map((party) => {
+        setPartyTypes((prev) => {
+          return prev.map((type) => {
+            if (type.type === party[AB]) {
+              return { ...type, isIn: true };
+            }
+            return type;
+          });
+        });
+      });
+    };
+    partyTypeCheck("typeA");
+    partyTypeCheck("typeB");
+  }, [pokemonsList]);
 
   return (
     <>
@@ -138,6 +195,19 @@ const Home = () => {
       </ul>
 
       <h1>test</h1>
+      <div className="flex justify-center">
+        {partyTypes.map((type) => {
+          return type.isIn ? (
+            <Badge color={typeCheck(type.type)} key={type.type}>
+              {type.type}
+            </Badge>
+          ) : (
+            <Badge color={"bg-gray-500"} key={type.type}>
+              {type.type}
+            </Badge>
+          );
+        })}
+      </div>
     </>
   );
 };
