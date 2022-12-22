@@ -140,72 +140,70 @@ const Home = () => {
         <title>パーティー</title>
       </Head>
       <Header />
-      <div className="m-auto mt-2 flex w-5/6 flex-col justify-center">
-        <div className="flex">
-          <PokemonSearch selected={selected} setSelected={setSelected} />
-          <button onClick={handleAdd}>追加</button>
-        </div>
-        <ul className="my-2 flex max-w-4xl flex-wrap border border-solid border-black p-2">
-          {pokemonsList.length === 0 ? (
-            <li
-              className="flex items-center border border-solid border-black p-2 shadow-lg"
-              style={{ minHeight: "74px" }}
-            >
-              <span>ここに追加</span>
-            </li>
-          ) : (
-            pokemonsList.map((pokemon: Pokemon) => {
-              return (
-                <li
-                  key={pokemon.number}
-                  className="m-1 min-w-[116px] border border-solid border-black p-2 shadow-lg"
-                >
-                  <div className="flex flex-col items-center justify-center">
-                    <span className="text-sm">{pokemon.name}</span>
-                    <BadgeWrapper>
-                      <Badge color={typeCheck(pokemon.typeA)}>
-                        {pokemon.typeA}
+      <div className="m-auto flex w-4/5">
+        <PokemonSearch selected={selected} setSelected={setSelected} />
+        <button onClick={handleAdd}>追加</button>
+      </div>
+      <ul className="m-auto my-2 flex w-4/5 flex-wrap border border-solid border-black p-2">
+        {pokemonsList.length === 0 ? (
+          <li
+            className="flex items-center border border-solid border-black p-2 shadow-lg"
+            style={{ minHeight: "74px" }}
+          >
+            <span>ここに追加</span>
+          </li>
+        ) : (
+          pokemonsList.map((pokemon: Pokemon) => {
+            return (
+              <li
+                key={pokemon.number}
+                className="m-1 min-w-[116px] border border-solid border-black p-2 shadow-lg"
+              >
+                <div className="flex flex-col items-center justify-center">
+                  <span className="text-sm">{pokemon.name}</span>
+                  <BadgeWrapper>
+                    <Badge color={typeCheck(pokemon.typeA)}>
+                      {pokemon.typeA}
+                    </Badge>
+                    {pokemon.typeB && (
+                      <Badge color={typeCheck(pokemon.typeB)}>
+                        {pokemon.typeB}
                       </Badge>
-                      {pokemon.typeB && (
-                        <Badge color={typeCheck(pokemon.typeB)}>
-                          {pokemon.typeB}
-                        </Badge>
-                      )}
-                    </BadgeWrapper>
-                    <div className="mr-1 mt-1">
-                      {pokemon.afterEvolution ? (
-                        <button
-                          onClick={(e) => handleEvolution(e, pokemon.name)}
-                          className="mr-1"
-                        >
-                          進化
-                        </button>
-                      ) : null}
-                      <button onClick={(e) => handleClear(e, pokemon.name)}>
-                        削除
+                    )}
+                  </BadgeWrapper>
+                  <div className="mr-1 mt-1">
+                    {pokemon.afterEvolution ? (
+                      <button
+                        onClick={(e) => handleEvolution(e, pokemon.name)}
+                        className="mr-1"
+                      >
+                        進化
                       </button>
-                    </div>
+                    ) : null}
+                    <button onClick={(e) => handleClear(e, pokemon.name)}>
+                      削除
+                    </button>
                   </div>
-                </li>
-              );
-            })
-          )}
-        </ul>
-
-        <p className="flex justify-center font-bold">含まれているタイプ</p>
-        <div className="flex flex-wrap justify-center space-x-1">
-          {partyTypes.map((type) => {
-            return type.isIn ? (
-              <Badge color={typeCheck(type.type)} key={type.type}>
-                {type.type}
-              </Badge>
-            ) : (
-              <Badge color={"bg-gray-500"} key={type.type}>
-                {type.type}
-              </Badge>
+                </div>
+              </li>
             );
-          })}
-        </div>
+          })
+        )}
+      </ul>
+
+      <p className="flex justify-center font-bold">含まれているタイプ</p>
+      <div className="flex flex-wrap justify-center space-x-1">
+        {partyTypes.map((type) => {
+          return type.isIn ? (
+            <Badge color={typeCheck(type.type)} key={type.type}>
+              {type.type}
+            </Badge>
+          ) : (
+            <Badge color={"bg-gray-500"} key={type.type}>
+              {type.type}
+            </Badge>
+          );
+        })}
       </div>
     </>
   );
