@@ -1,5 +1,5 @@
 import { PokemonData } from "mock/pokemons";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, memo, SetStateAction } from "react";
 import { Pokemon } from "types/pokemon";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   setSelected: Dispatch<SetStateAction<string>>;
 };
 
-export const PokemonSearch = ({ selected, setSelected }: Props) => {
+export const PokemonSearch = memo(({ selected, setSelected }: Props) => {
   return (
     <>
       <input
@@ -41,4 +41,4 @@ export const PokemonSearch = ({ selected, setSelected }: Props) => {
       </div>
     </>
   );
-};
+});

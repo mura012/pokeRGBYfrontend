@@ -20,7 +20,6 @@ const Experience = () => {
   }, [currentLevel]);
 
   const handleEvolution = (select: string) => {
-    console.log(select);
     const [level] = PokemonData.filter((pokemon) => pokemon.name === select);
 
     if (select === "") {
@@ -137,14 +136,14 @@ const Experience = () => {
             進化レベル
           </button>
         </div>
-        <Button
+        <button
           onClick={() => {
             handleSearch(selected, currentLevel, targetLevel);
           }}
-          className="absolute right-2 bottom-2"
+          className="absolute right-4 bottom-4 py-2 px-3"
         >
           検索
-        </Button>
+        </button>
         <div className="pb-6">
           {errorMessage ? (
             <p>{errorMessage}</p>

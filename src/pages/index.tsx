@@ -118,6 +118,8 @@ const Home = () => {
   };
 
   useEffect(() => {
+    console.log("effect");
+
     const partyTypeCheck = (AB: "typeA" | "typeB") => {
       pokemonsList.map((party) => {
         setPartyTypes((prev) => {
