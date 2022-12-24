@@ -17,7 +17,7 @@ const Experience = () => {
     if (currentLevel >= targetLevel) {
       setTargetLevel(currentLevel + 1);
     }
-  }, [currentLevel]);
+  }, [currentLevel, targetLevel]);
 
   const handleEvolution = (select: string) => {
     const [level] = PokemonData.filter((pokemon) => pokemon.name === select);

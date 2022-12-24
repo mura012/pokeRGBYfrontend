@@ -7,7 +7,10 @@ type Props = {
   setSelected: Dispatch<SetStateAction<string>>;
 };
 
-export const PokemonSearch = memo(({ selected, setSelected }: Props) => {
+export const PokemonSearch = memo(function memoPokemon({
+  selected,
+  setSelected,
+}: Props) {
   return (
     <>
       <input
