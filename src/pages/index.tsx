@@ -7,9 +7,10 @@ import { useTypeCheck } from "fooks/useTypeCheck";
 import { PokemonData } from "mock/pokemons";
 import { Header } from "components/header";
 import Head from "next/head";
+import { PokemonTypes } from "types/pokemonType";
 
 type Types = {
-  type: string;
+  type: PokemonTypes;
   isIn: boolean;
 };
 const AllTypes: Types[] = [
