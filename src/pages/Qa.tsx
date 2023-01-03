@@ -1,16 +1,11 @@
 import { Accordion } from "@mantine/core";
-import { Header } from "components/header";
+import { Layout } from "layout";
 import { client } from "libs/client";
-import Head from "next/head";
 import React from "react";
 
 const Qa = ({ data }: any) => {
   return (
-    <div>
-      <Head>
-        <title>Q&A</title>
-      </Head>
-      <Header />
+    <Layout title="Q&A">
       <div className="m-auto w-3/4">
         <h3 className="text-center">
           ポケモン赤緑について気になって調べたことをQ&A形式で掲載しています。
@@ -26,7 +21,7 @@ const Qa = ({ data }: any) => {
           })}
         </Accordion>
       </div>
-    </div>
+    </Layout>
   );
 };
 

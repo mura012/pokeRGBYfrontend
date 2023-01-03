@@ -1,8 +1,7 @@
 import { NumberInput } from "@mantine/core";
-import { Header } from "components/header";
 import { PokemonSearch } from "components/pokemonsSearch";
+import { Layout } from "layout";
 import { PokemonData } from "mock/pokemons";
-import Head from "next/head";
 import { useState } from "react";
 
 const Experience = () => {
@@ -84,11 +83,7 @@ const Experience = () => {
   };
 
   return (
-    <div>
-      <Head>
-        <title>経験値計算</title>
-      </Head>
-      <Header />
+    <Layout title="経験値計算">
       <div className="relative m-auto mt-24 flex w-96 flex-col items-center justify-center bg-gray-100 p-3 pb-7 shadow-md">
         <div className="flex">
           <PokemonSearch selected={selected} setSelected={setSelected} />
@@ -156,7 +151,7 @@ const Experience = () => {
           )}
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

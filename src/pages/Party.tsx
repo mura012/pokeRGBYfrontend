@@ -5,9 +5,8 @@ import { Pokemon, PokemonType } from "types/pokemon";
 import { Badge, BadgeWrapper } from "components/badge";
 import { useTypeCheck } from "fooks/useTypeCheck";
 import { PokemonData } from "mock/pokemons";
-import { Header } from "components/header";
-import Head from "next/head";
 import { PokemonTypes } from "types/pokemonType";
+import { Layout } from "layout";
 
 type Types = {
   type: PokemonTypes;
@@ -31,7 +30,7 @@ const AllTypes: Types[] = [
   { type: "こおり", isIn: false },
 ];
 
-const Home = () => {
+const Party = () => {
   const [pokemonsList, setPokemonsList] = useState<PokemonType>([]);
   const [partyTypes, setPartyTypes] = useState(AllTypes);
   const [selected, setSelected] = useState("");
@@ -138,11 +137,7 @@ const Home = () => {
   }, [pokemonsList]);
 
   return (
-    <>
-      <Head>
-        <title>パーティー</title>
-      </Head>
-      <Header />
+    <Layout title="パーティー">
       <div className="m-auto mt-2 flex w-3/5">
         <PokemonSearch selected={selected} setSelected={setSelected} />
         <button onClick={handleAdd}>追加</button>
@@ -208,8 +203,8 @@ const Home = () => {
           );
         })}
       </div>
-    </>
+    </Layout>
   );
 };
 
-export default Home;
+export default Party;

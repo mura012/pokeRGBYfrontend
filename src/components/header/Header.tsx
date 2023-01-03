@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Header = () => {
   const links = [
-    { id: 1, href: "/", label: "タイプ" },
+    { id: 1, href: "/Party", label: "パーティー" },
     { id: 2, href: "/Experience", label: "経験値" },
     { id: 3, href: "/Qa", label: "Q&A" },
   ];
