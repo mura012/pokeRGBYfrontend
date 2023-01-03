@@ -1,9 +1,9 @@
-import { Button, NumberInput } from "@mantine/core";
+import { NumberInput } from "@mantine/core";
 import { Header } from "components/header";
 import { PokemonSearch } from "components/pokemonsSearch";
 import { PokemonData } from "mock/pokemons";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Experience = () => {
   const [selected, setSelected] = useState("");
@@ -12,12 +12,6 @@ const Experience = () => {
   const [targetLevel, setTargetLevel] = useState<number>(1);
   const [needLevel, setNeedLevel] = useState<number>(0);
   const [levelType, setLevelType] = useState<number>(0);
-
-  useEffect(() => {
-    if (currentLevel >= targetLevel) {
-      setTargetLevel(currentLevel + 1);
-    }
-  }, [currentLevel, targetLevel]);
 
   const handleEvolution = (select: string) => {
     const [level] = PokemonData.filter((pokemon) => pokemon.name === select);
@@ -39,6 +33,9 @@ const Experience = () => {
     current: number,
     target: number
   ) => {
+    console.log(current);
+    console.log(target);
+
     setErrorMessage("");
     if (targetPokemon === "") {
       setErrorMessage("ポケモンを選択してください");
@@ -92,7 +89,7 @@ const Experience = () => {
         <title>経験値計算</title>
       </Head>
       <Header />
-      <div className="relative m-auto mt-24 flex w-96 flex-col items-center justify-center bg-gray-100 p-3 shadow-md">
+      <div className="relative m-auto mt-24 flex w-96 flex-col items-center justify-center bg-gray-100 p-3 pb-7 shadow-md">
         <div className="flex">
           <PokemonSearch selected={selected} setSelected={setSelected} />
           <input
@@ -102,40 +99,44 @@ const Experience = () => {
           />
           <p>万タイプ</p>
         </div>
-        <p>現在のレベル</p>
-        <NumberInput
-          placeholder="1~99"
-          type="number"
-          value={currentLevel}
-          onChange={(e: number) => {
-            setCurrentLevel(e);
-          }}
-          min={1}
-          stepHoldDelay={500}
-          stepHoldInterval={100}
-        />
-        <p>目標のレベル</p>
-        <div className="relative">
+        <label>
+          <p className="flex justify-center">現在のレベル</p>
           <NumberInput
-            placeholder="2~100"
+            placeholder="1~99"
             type="number"
-            value={targetLevel}
+            value={currentLevel}
             onChange={(e: number) => {
-              setTargetLevel(e);
+              setCurrentLevel(e);
             }}
             min={1}
             stepHoldDelay={500}
             stepHoldInterval={100}
           />
-          <button
-            onClick={() => {
-              handleEvolution(selected);
-            }}
-            className="absolute right-7 top-3 cursor-pointer border-0 bg-white p-0 text-xs font-semibold text-black hover:bg-white"
-          >
-            進化レベル
-          </button>
-        </div>
+        </label>
+        <label>
+          <p className="flex justify-center">目標のレベル</p>
+          <div className="relative">
+            <NumberInput
+              placeholder="2~100"
+              type="number"
+              value={targetLevel}
+              onChange={(e: number) => {
+                setTargetLevel(e);
+              }}
+              min={1}
+              stepHoldDelay={500}
+              stepHoldInterval={100}
+            />
+            <button
+              onClick={() => {
+                handleEvolution(selected);
+              }}
+              className="absolute right-7 top-3 cursor-pointer border-0 bg-white p-0 text-xs font-semibold text-black hover:bg-white"
+            >
+              進化レベル
+            </button>
+          </div>
+        </label>
         <button
           onClick={() => {
             handleSearch(selected, currentLevel, targetLevel);

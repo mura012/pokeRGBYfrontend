@@ -4,6 +4,7 @@ const MyDocument = () => {
   return (
     <Html lang="ja">
       <Head />
+
       <body>
         <Main />
         <NextScript />
