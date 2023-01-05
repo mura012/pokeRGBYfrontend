@@ -14,7 +14,7 @@ export const Layout = ({ children, title = "ぽけRGBY" }: Props) => {
         <title>{title}</title>
       </Head>
       <Header />
-      <div>{children}</div>
+      <div className="m-auto flex flex-col sm:w-3/5">{children}</div>
     </>
   );
 };

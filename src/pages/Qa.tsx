@@ -8,7 +8,7 @@ const Qa = ({ data }: any) => {
     <Layout title="Q&A">
       <div className="m-auto w-3/4">
         <h3 className="text-center">
-          ポケモン赤緑について気になって調べたことをQ&A形式で掲載しています。
+          ポケモン赤緑青ピカチューについて気になって調べたことをQ&A形式で掲載しています。
         </h3>
         <Accordion defaultValue="itibansoto">
           {data.contents.map((item: any) => {

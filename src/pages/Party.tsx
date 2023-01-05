@@ -138,11 +138,11 @@ const Party = () => {
 
   return (
     <Layout title="パーティー">
-      <div className="m-auto mt-2 flex w-3/5">
+      <div className="mt-2 flex">
         <PokemonSearch selected={selected} setSelected={setSelected} />
         <button onClick={handleAdd}>追加</button>
       </div>
-      <ul className="m-auto my-2 flex flex-wrap justify-center border border-solid border-black p-2 sm:w-3/5">
+      <ul className="my-2 flex flex-wrap border border-solid border-black p-2">
         {pokemonsList.length === 0 ? (
           <li
             className="flex items-center border border-solid border-black p-2 shadow-lg"
