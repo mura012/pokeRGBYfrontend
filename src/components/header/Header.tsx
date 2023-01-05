@@ -1,5 +1,5 @@
 import { links } from "libs/links";
-import Link from "next/Link";
+import Link from "next/link";
 
 export const Header = () => {
   return (

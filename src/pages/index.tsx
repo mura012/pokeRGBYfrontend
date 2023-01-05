@@ -1,7 +1,7 @@
 import { Layout } from "layout";
 import { links } from "libs/links";
 import Image from "next/image";
-import Link from "next/Link";
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -13,6 +13,7 @@ const Home = () => {
             <Link
               href={link.href}
               className="m-2 flex justify-between rounded-md border border-solid border-black shadow-md"
+              key={link.id}
             >
               <div>
                 <h3 className="ml-2">{link.label}</h3>
