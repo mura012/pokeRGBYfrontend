@@ -7,6 +7,8 @@ import { useTypeCheck } from "fooks/useTypeCheck";
 import { PokemonData } from "mock/pokemons";
 import { PokemonTypes } from "types/pokemonType";
 import { Layout } from "layout";
+import Image from "next/image";
+import { Table } from "@mantine/core";
 
 type Types = {
   type: PokemonTypes;
@@ -118,8 +120,6 @@ const Party = () => {
   };
 
   useEffect(() => {
-    console.log("effect");
-
     const partyTypeCheck = (AB: "typeA" | "typeB") => {
       pokemonsList.map((party) => {
         setPartyTypes((prev) => {
@@ -203,6 +203,14 @@ const Party = () => {
           );
         })}
       </div>
+      <Image
+        src={"/Compatibility.png"}
+        height={400}
+        width={500}
+        layout={"responsive"}
+        alt={"20"}
+        className="mt-3"
+      />
     </Layout>
   );
 };
