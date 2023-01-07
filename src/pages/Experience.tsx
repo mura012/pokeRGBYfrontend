@@ -33,9 +33,6 @@ const Experience = () => {
     current: number,
     target: number
   ) => {
-    console.log(current);
-    console.log(target);
-
     setErrorMessage("");
     if (targetPokemon === "") {
       setErrorMessage("ポケモンを選択してください");

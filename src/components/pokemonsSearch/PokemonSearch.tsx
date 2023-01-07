@@ -8,7 +8,6 @@ type Props = {
 
 export const PokemonSearch = ({ selected, setSelected }: Props) => {
   const { data } = useGetPokemon();
-  console.log(data);
 
   return (
     <>
