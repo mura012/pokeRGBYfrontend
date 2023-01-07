@@ -10,7 +10,7 @@ const Qa = ({ data }: any) => {
         <h3 className="text-center">
           ポケモン赤緑青ピカチューについて気になって調べたことをQ&A形式で掲載しています。
         </h3>
-        <Accordion defaultValue="itibansoto">
+        <Accordion defaultValue="itibansoto" variant="contained">
           {data.contents.map((item: any) => {
             return (
               <Accordion.Item value={item.question} key={item.question}>
