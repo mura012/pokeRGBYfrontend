@@ -14,11 +14,11 @@ export const Layout = ({ children, title = "ぽけRGBY" }: Props) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <Header />
-      <div className="m-auto flex min-h-[88vh] flex-col sm:w-3/5">
-        {children}
+      <div className="m-auto flex min-h-screen flex-col sm:w-3/5">
+        <Header />
+        <div className="flex-1">{children}</div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };
