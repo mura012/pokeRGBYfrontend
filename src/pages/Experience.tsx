@@ -1,7 +1,7 @@
 import { NumberInput } from "@mantine/core";
 import { PokemonSearch } from "components/pokemonsSearch";
+import { useGetPokemon } from "fooks/useGetPokemon";
 import { Layout } from "layout";
-import { PokemonData } from "mock/pokemons";
 import { useState } from "react";
 
 const Experience = () => {
@@ -11,9 +11,10 @@ const Experience = () => {
   const [targetLevel, setTargetLevel] = useState<number>(1);
   const [needLevel, setNeedLevel] = useState<number>(0);
   const [levelType, setLevelType] = useState<number>(0);
+  const { data } = useGetPokemon();
 
   const handleEvolution = (select: string) => {
-    const [level] = PokemonData.filter((pokemon) => pokemon.name === select);
+    const [level] = data.filter((pokemon) => pokemon.name === select);
 
     if (select === "") {
       alert("ポケモンを選択してください。");
@@ -50,7 +51,7 @@ const Experience = () => {
       return;
     }
 
-    const [experience] = PokemonData.filter(
+    const [experience] = data.filter(
       (pokemon) => pokemon.name === targetPokemon
     );
     if (experience === undefined) return;

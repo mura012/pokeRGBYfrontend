@@ -1,16 +1,15 @@
-import { PokemonData } from "mock/pokemons";
-import { Dispatch, memo, SetStateAction } from "react";
-import { Pokemon } from "types/pokemon";
+import { useGetPokemon } from "fooks/useGetPokemon";
+import { Dispatch, SetStateAction } from "react";
 
 type Props = {
   selected: string;
   setSelected: Dispatch<SetStateAction<string>>;
 };
 
-export const PokemonSearch = memo(function memoPokemon({
-  selected,
-  setSelected,
-}: Props) {
+export const PokemonSearch = ({ selected, setSelected }: Props) => {
+  const { data } = useGetPokemon();
+  console.log(data);
+
   return (
     <>
       <input
@@ -23,7 +22,7 @@ export const PokemonSearch = memo(function memoPokemon({
       />
       <div className="relative">
         <datalist id="example">
-          {PokemonData.map(({ name, number, typeA, typeB }: Pokemon) => {
+          {data?.map(({ name, number, typeA, typeB }) => {
             return (
               <option value={name} key={number}>
                 {`${typeA}　`}
@@ -44,4 +43,4 @@ export const PokemonSearch = memo(function memoPokemon({
       </div>
     </>
   );
-});
+};

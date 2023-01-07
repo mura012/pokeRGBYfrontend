@@ -4,11 +4,10 @@ import { PokemonSearch } from "components/pokemonsSearch/PokemonSearch";
 import { Pokemon, PokemonType } from "types/pokemon";
 import { Badge, BadgeWrapper } from "components/badge";
 import { useTypeCheck } from "fooks/useTypeCheck";
-import { PokemonData } from "mock/pokemons";
 import { PokemonTypes } from "types/pokemonType";
 import { Layout } from "layout";
 import Image from "next/image";
-import { Table } from "@mantine/core";
+import { useGetPokemon } from "fooks/useGetPokemon";
 
 type Types = {
   type: PokemonTypes;
@@ -36,6 +35,7 @@ const Party = () => {
   const [pokemonsList, setPokemonsList] = useState<PokemonType>([]);
   const [partyTypes, setPartyTypes] = useState(AllTypes);
   const [selected, setSelected] = useState("");
+  const { data } = useGetPokemon();
 
   const { typeCheck } = useTypeCheck();
   const handleAdd = (e: ClickEvent) => {
@@ -51,7 +51,7 @@ const Party = () => {
       return pokemonsList;
     }
 
-    PokemonData.map((pokemon) => {
+    data.map((pokemon) => {
       if (pokemon.name === selected) {
         const newArray = [
           ...pokemonsList,
@@ -78,7 +78,7 @@ const Party = () => {
       return;
     }
 
-    const [evolutionPokemon] = PokemonData.filter(
+    const [evolutionPokemon] = data.filter(
       (pokemon: Pokemon) => pokemon.name === result.afterEvolution
     );
 
