@@ -5,7 +5,7 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<PokemonType>
 ) => {
-  const data = await fetch(`${process.env.BACKEND_API_URL}api/pokemon`);
+  const data = await fetch(`${process.env.BACKEND_API_URL}`);
   const json = await data.json();
   res.status(200).json(json);
 };
