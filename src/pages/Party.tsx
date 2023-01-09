@@ -209,7 +209,7 @@ const Party = () => {
         width={500}
         layout={"responsive"}
         alt={"20"}
-        className="mt-3"
+        className="mt-3 max-w-lg"
       />
     </Layout>
   );
