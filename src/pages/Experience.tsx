@@ -1,8 +1,8 @@
 import { NumberInput } from "@mantine/core";
 import { PokemonSearch } from "components/pokemonsSearch";
-import { useGetPokemon } from "fooks/useGetPokemon";
 import { Layout } from "layout";
 import { useReducer, useState } from "react";
+import { PokemonType } from "types/pokemon";
 
 type State = {
   errorMessage: string;
@@ -74,14 +74,13 @@ const reducer = (state: any, action: Action) => {
   }
 };
 
-const Experience = () => {
+const Experience = ({ pokemonData }: { pokemonData: PokemonType }) => {
   const [selected, setSelected] = useState("");
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { data } = useGetPokemon();
 
   const handleEvolution = (select: string) => {
-    const [level] = data.filter((pokemon) => pokemon.name === select);
+    const [level] = pokemonData.filter((pokemon) => pokemon.name === select);
 
     if (select === "") {
       alert("ポケモンを選択してください。");
@@ -118,7 +117,7 @@ const Experience = () => {
       return;
     }
 
-    const [experience] = data.filter(
+    const [experience] = pokemonData.filter(
       (pokemon) => pokemon.name === targetPokemon
     );
     if (experience === undefined) return;
@@ -156,7 +155,11 @@ const Experience = () => {
     <Layout title="経験値計算">
       <div className="relative m-auto mt-24 flex w-80 flex-col items-center justify-center bg-gray-100 pb-7 pt-7 shadow-md">
         <div className="flex">
-          <PokemonSearch selected={selected} setSelected={setSelected} />
+          <PokemonSearch
+            selected={selected}
+            setSelected={setSelected}
+            pokemonData={pokemonData}
+          />
           <input
             className="flex w-6 items-center text-right"
             value={state.levelType}
@@ -223,6 +226,22 @@ const Experience = () => {
       </div>
     </Layout>
   );
+};
+
+export const getStaticProps = async () => {
+  const data = await fetch(
+    "https://pokemonrgbytoolsbackend.onrender.com/api/pokemon"
+  );
+  const pokemonData = await data.json();
+  console.log("SSGの");
+  console.log(pokemonData);
+
+  return {
+    props: {
+      pokemonData,
+      fallback: false,
+    },
+  };
 };
 
 export default Experience;

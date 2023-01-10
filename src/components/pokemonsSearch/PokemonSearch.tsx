@@ -1,14 +1,17 @@
-import { useGetPokemon } from "fooks/useGetPokemon";
 import { Dispatch, SetStateAction } from "react";
+import { PokemonType } from "types/pokemon";
 
 type Props = {
   selected: string;
   setSelected: Dispatch<SetStateAction<string>>;
+  pokemonData: PokemonType;
 };
 
-export const PokemonSearch = ({ selected, setSelected }: Props) => {
-  const { data } = useGetPokemon();
-
+export const PokemonSearch = ({
+  selected,
+  setSelected,
+  pokemonData,
+}: Props) => {
   return (
     <>
       <input
@@ -21,7 +24,7 @@ export const PokemonSearch = ({ selected, setSelected }: Props) => {
       />
       <div className="relative">
         <datalist id="example">
-          {data?.map(({ name, number, typeA, typeB }) => {
+          {pokemonData?.map(({ name, number, typeA, typeB }) => {
             return (
               <option value={name} key={number}>
                 {`${typeA}　`}

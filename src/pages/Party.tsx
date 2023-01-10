@@ -7,7 +7,6 @@ import { useTypeCheck } from "fooks/useTypeCheck";
 import { PokemonTypes } from "types/pokemonType";
 import { Layout } from "layout";
 import Image from "next/image";
-import { useGetPokemon } from "fooks/useGetPokemon";
 
 type Types = {
   type: PokemonTypes;
@@ -31,11 +30,10 @@ const AllTypes: Types[] = [
   { type: "こおり", isIn: false },
 ];
 
-const Party = () => {
+const Party = ({ pokemonData }: { pokemonData: PokemonType }) => {
   const [pokemonsList, setPokemonsList] = useState<PokemonType>([]);
   const [partyTypes, setPartyTypes] = useState(AllTypes);
   const [selected, setSelected] = useState("");
-  const { data } = useGetPokemon();
 
   const { typeCheck } = useTypeCheck();
   const handleAdd = (e: ClickEvent) => {
@@ -51,7 +49,7 @@ const Party = () => {
       return pokemonsList;
     }
 
-    data.map((pokemon) => {
+    pokemonData.map((pokemon) => {
       if (pokemon.name === selected) {
         const newArray = [
           ...pokemonsList,
@@ -78,7 +76,7 @@ const Party = () => {
       return;
     }
 
-    const [evolutionPokemon] = data.filter(
+    const [evolutionPokemon] = pokemonData.filter(
       (pokemon: Pokemon) => pokemon.name === result.afterEvolution
     );
 
@@ -139,7 +137,11 @@ const Party = () => {
   return (
     <Layout title="パーティー">
       <div className="mt-2 flex">
-        <PokemonSearch selected={selected} setSelected={setSelected} />
+        <PokemonSearch
+          selected={selected}
+          setSelected={setSelected}
+          pokemonData={pokemonData}
+        />
         <button onClick={handleAdd}>追加</button>
       </div>
       <ul className="my-2 flex flex-wrap border border-solid border-black bg-white p-2">
@@ -213,6 +215,22 @@ const Party = () => {
       />
     </Layout>
   );
+};
+
+export const getStaticProps = async () => {
+  const data = await fetch(
+    "https://pokemonrgbytoolsbackend.onrender.com/api/pokemon"
+  );
+  const pokemonData = await data.json();
+  console.log("SSGの");
+  console.log(pokemonData);
+
+  return {
+    props: {
+      pokemonData,
+      fallback: false,
+    },
+  };
 };
 
 export default Party;
