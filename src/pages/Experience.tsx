@@ -2,15 +2,82 @@ import { NumberInput } from "@mantine/core";
 import { PokemonSearch } from "components/pokemonsSearch";
 import { useGetPokemon } from "fooks/useGetPokemon";
 import { Layout } from "layout";
-import { useState } from "react";
+import { useReducer, useState } from "react";
+
+type State = {
+  errorMessage: string;
+  currentLevel: number;
+  targetLevel: number;
+  needLevel: number;
+  levelType: number;
+};
+
+const initialState: State = {
+  errorMessage: "",
+  currentLevel: 1,
+  targetLevel: 1,
+  needLevel: 0,
+  levelType: 0,
+};
+
+type Action =
+  | {
+      type: "error";
+      error: string;
+    }
+  | {
+      type: "current";
+      current: number;
+    }
+  | {
+      type: "target";
+      target: number;
+    }
+  | {
+      type: "need";
+      need: number;
+    }
+  | {
+      type: "levelType";
+      levelType: number;
+    };
+
+const reducer = (state: any, action: Action) => {
+  switch (action.type) {
+    case "error":
+      return {
+        ...state,
+        errorMessage: action.error,
+      };
+    case "current":
+      return {
+        ...state,
+        currentLevel: action.current,
+      };
+    case "target":
+      return {
+        ...state,
+        targetLevel: action.target,
+      };
+    case "need":
+      return {
+        ...state,
+        needLevel: action.need,
+      };
+    case "levelType":
+      return {
+        ...state,
+        levelType: action.levelType,
+      };
+    default:
+      throw new Error("設定されていないactionです");
+  }
+};
 
 const Experience = () => {
   const [selected, setSelected] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [currentLevel, setCurrentLevel] = useState<number>(1);
-  const [targetLevel, setTargetLevel] = useState<number>(1);
-  const [needLevel, setNeedLevel] = useState<number>(0);
-  const [levelType, setLevelType] = useState<number>(0);
+
+  const [state, dispatch] = useReducer(reducer, initialState);
   const { data } = useGetPokemon();
 
   const handleEvolution = (select: string) => {
@@ -25,7 +92,7 @@ const Experience = () => {
       alert("このポケモンは進化しないかレベルアップによる進化をしません。");
       return;
     }
-    setTargetLevel(level.evolutionLevel);
+    dispatch({ type: "target", target: level.evolutionLevel });
   };
 
   const handleSearch = (
@@ -33,18 +100,21 @@ const Experience = () => {
     current: number,
     target: number
   ) => {
-    setErrorMessage("");
+    dispatch({ type: "error", error: "" });
     if (targetPokemon === "") {
-      setErrorMessage("ポケモンを選択してください");
+      dispatch({ type: "error", error: "ポケモンを選択してください" });
       return;
     }
 
     if (target > 100) {
-      setErrorMessage("目標のレベルを100以下にしてください");
+      dispatch({ type: "error", error: "目標のレベルを100以下にしてください" });
       return;
     }
     if (current > target || current === target) {
-      setErrorMessage("現在のレベル<目標のレベルにして下さい");
+      dispatch({
+        type: "error",
+        error: "現在のレベル<目標のレベルにして下さい",
+      });
       return;
     }
 
@@ -52,11 +122,12 @@ const Experience = () => {
       (pokemon) => pokemon.name === targetPokemon
     );
     if (experience === undefined) return;
-    setLevelType(experience.point);
+    dispatch({ type: "levelType", levelType: experience.point });
     const level = (point: number) => {
       if (point === 105 && current === 1) {
         const need = target ** 3 * 1.2 - 15 * target ** 2 + 100 * target - 140;
-        setNeedLevel(Math.floor(need));
+        dispatch({ type: "need", need: Math.floor(need) });
+
         return;
       }
       if (point === 105) {
@@ -66,15 +137,16 @@ const Experience = () => {
           100 * target -
           140 -
           (current ** 3 * 1.2 - 15 * current ** 2 + 100 * current - 140);
-        setNeedLevel(Math.floor(need));
+        dispatch({ type: "need", need: Math.floor(need) });
+
         return;
       }
       if (current === 1) {
         const need = target ** 3 * (point / 100);
-        setNeedLevel(Math.floor(need));
+        dispatch({ type: "need", need: Math.floor(need) });
       } else {
         const need = target ** 3 * (point / 100) - current ** 3 * (point / 100);
-        setNeedLevel(Math.floor(need));
+        dispatch({ type: "need", need: Math.floor(need) });
       }
     };
     level(experience.point);
@@ -87,7 +159,7 @@ const Experience = () => {
           <PokemonSearch selected={selected} setSelected={setSelected} />
           <input
             className="flex w-6 items-center text-right"
-            value={levelType}
+            value={state.levelType}
             disabled
           />
           <p>万タイプ</p>
@@ -97,9 +169,9 @@ const Experience = () => {
           <NumberInput
             placeholder="1~99"
             type="number"
-            value={currentLevel}
+            value={state.currentLevel}
             onChange={(e: number) => {
-              setCurrentLevel(e);
+              dispatch({ type: "current", current: e });
             }}
             min={1}
             stepHoldDelay={500}
@@ -112,9 +184,9 @@ const Experience = () => {
             <NumberInput
               placeholder="2~100"
               type="number"
-              value={targetLevel}
+              value={state.targetLevel}
               onChange={(e: number) => {
-                setTargetLevel(e);
+                dispatch({ type: "target", target: e });
               }}
               min={1}
               stepHoldDelay={500}
@@ -132,19 +204,19 @@ const Experience = () => {
         </label>
         <button
           onClick={() => {
-            handleSearch(selected, currentLevel, targetLevel);
+            handleSearch(selected, state.currentLevel, state.targetLevel);
           }}
           className="absolute right-4 bottom-4 py-2 px-3"
         >
           検索
         </button>
         <div className="pb-6">
-          {errorMessage ? (
-            <p>{errorMessage}</p>
+          {state.errorMessage ? (
+            <p>{state.errorMessage}</p>
           ) : (
             <>
               <p className="mb-0">目標のレベルに必要な経験値は</p>
-              <p className="mt-0">{`約${needLevel}です`}</p>
+              <p className="mt-0">{`約${state.needLevel}です`}</p>
             </>
           )}
         </div>
