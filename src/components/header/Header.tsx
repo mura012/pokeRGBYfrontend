@@ -7,7 +7,7 @@ export const Header = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
 
   return (
-    <header className="flex h-12 items-center justify-around border-0 border-b border-solid font-bold">
+    <header className="flex h-12 items-center justify-around border-0 border-b border-solid bg-gray-500 font-bold">
       <Drawer
         opened={opened}
         onClose={() => toggle()}
@@ -37,13 +37,18 @@ export const Header = () => {
         Open Drawer
       </Burger>
 
-      <p>pokeRGBY</p>
+      <p className="text-gray-100">pokeRGBY</p>
       <nav>
-        <ul className="hidden space-x-12 xs:flex">
+        <ul className="hidden space-x-12 xs:flex ">
           {links.map((link) => {
             return (
-              <li key={link.id}>
-                <Link href={link.href}>{link.label}</Link>
+              <li key={link.id} className="h-fit ">
+                <Link
+                  href={link.href}
+                  className="rounded px-3 py-2 text-gray-100 hover:bg-gray-700"
+                >
+                  {link.label}
+                </Link>
               </li>
             );
           })}
