@@ -233,8 +233,6 @@ export const getStaticProps = async () => {
     "https://pokemonrgbytoolsbackend.onrender.com/api/pokemon"
   );
   const pokemonData = await data.json();
-  console.log("SSGの");
-  console.log(pokemonData);
 
   return {
     props: {
