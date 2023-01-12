@@ -1,6 +1,6 @@
 import { createClient } from "microcms-js-sdk";
 
-export const client = createClient({
+export const pokeClient = createClient({
   serviceDomain: "questionandanswer",
-  apiKey: process.env.CMS_API_KEY,
+  apiKey: process.env.POKE_CMS_API_KEY,
 });
