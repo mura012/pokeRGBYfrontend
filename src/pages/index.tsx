@@ -1,9 +1,22 @@
 import { Layout } from "layout";
+import { blogClient } from "libs/blogClient";
 import { links } from "libs/links";
+import { MicroCMSListResponse } from "microcms-js-sdk";
+import { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-const Home = () => {
+type Blog = {
+  id: string;
+  image: {
+    url: string;
+  };
+  title: string;
+  body: string;
+  badge: string;
+};
+
+const Home: NextPage<MicroCMSListResponse<Blog>> = (props) => {
   return (
     <Layout title="ホーム">
       {links
@@ -12,7 +25,7 @@ const Home = () => {
           return (
             <Link
               href={link.href}
-              className="m-2 flex justify-between rounded-md border border-solid border-black shadow-md"
+              className="my-2 flex justify-between rounded-md border border-solid border-black shadow-md"
               key={link.id}
             >
               <div>
@@ -29,8 +42,35 @@ const Home = () => {
             </Link>
           );
         })}
+
+      <h4>ポケモンに関するブログも書いています。</h4>
+      {props.contents
+        .filter((blog) => blog.badge[0] === "ポケモン")
+        .map((blog) => {
+          return (
+            <div className="w-fit" key={blog.id}>
+              <Link href={`https://www.mura-mostlove.com/blogPage/${blog.id}`}>
+                <p className="w-fit text-base text-blue-500 hover:text-red-500">
+                  {blog.title}
+                </p>
+              </Link>
+            </div>
+          );
+        })}
     </Layout>
   );
+};
+
+export const getStaticProps: GetStaticProps<
+  MicroCMSListResponse<Blog>
+> = async () => {
+  const data = await blogClient.getList({
+    endpoint: "blog",
+  });
+
+  return {
+    props: data,
+  };
 };
 
 export default Home;

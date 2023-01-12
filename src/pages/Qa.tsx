@@ -1,9 +1,16 @@
 import { Accordion } from "@mantine/core";
 import { Layout } from "layout";
-import { client } from "libs/client";
-import React from "react";
+import { pokeClient } from "libs/pokeClient";
+import { MicroCMSListResponse } from "microcms-js-sdk";
+import { GetStaticProps, NextPage } from "next";
 
-const Qa = ({ data }: any) => {
+type QA = {
+  question: string;
+  answer: string;
+  test: string;
+};
+
+const Qa: NextPage<MicroCMSListResponse<QA>> = (props) => {
   return (
     <Layout title="Q&A">
       <div className="m-auto">
@@ -11,7 +18,7 @@ const Qa = ({ data }: any) => {
           ポケモン赤緑青ピカチューについて気になって調べたことをQ&A形式で掲載しています。
         </h3>
         <Accordion defaultValue="itibansoto" variant="contained">
-          {data.contents.map((item: any) => {
+          {props.contents.map((item) => {
             return (
               <Accordion.Item value={item.question} key={item.question}>
                 <Accordion.Control>{item.question}</Accordion.Control>
@@ -25,15 +32,15 @@ const Qa = ({ data }: any) => {
   );
 };
 
-export const getStaticProps = async () => {
-  const data = await client.get({
+export const getStaticProps: GetStaticProps<
+  MicroCMSListResponse<QA>
+> = async () => {
+  const data = await pokeClient.getList({
     endpoint: "questionandanswer",
   });
 
   return {
-    props: {
-      data,
-    },
+    props: data,
   };
 };
 
