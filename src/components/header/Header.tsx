@@ -17,17 +17,14 @@ export const Header = () => {
         className="bg-gray-500 text-3xl text-gray-100"
         overlayColor="white"
       >
-        <ul className="space-y-2 text-xl">
+        <ul className="space-y-2 p-0 text-xl">
           {links.map((link) => {
             return (
               <li
                 key={link.id}
-                className="rounded px-3 py-2 text-2xl text-gray-100 hover:bg-gray-700"
+                className="rounded px-3 py-2 text-2xl text-gray-100 hover:bg-gray-400 active:bg-gray-600"
               >
-                <Link
-                  href={link.href}
-                  className="text-blue-400 hover:text-red-600"
-                >
+                <Link href={link.href} className="text-gray-100">
                   <div className="flex items-center">{link.label}</div>
                 </Link>
               </li>
