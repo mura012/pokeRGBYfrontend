@@ -83,12 +83,15 @@ const Experience = ({ pokemonData }: { pokemonData: PokemonType }) => {
     const [level] = pokemonData.filter((pokemon) => pokemon.name === select);
 
     if (select === "") {
-      alert("ポケモンを選択してください。");
+      dispatch({ type: "error", error: "ポケモンを選択してください" });
       return;
     }
 
     if (level.evolutionLevel === undefined) {
-      alert("このポケモンは進化しないかレベルアップによる進化をしません。");
+      dispatch({
+        type: "error",
+        error: "このポケモンは進化しないかレベルアップによる進化をしません",
+      });
       return;
     }
     dispatch({ type: "target", target: level.evolutionLevel });
@@ -215,7 +218,9 @@ const Experience = ({ pokemonData }: { pokemonData: PokemonType }) => {
         </button>
         <div className="pb-6">
           {state.errorMessage ? (
-            <p>{state.errorMessage}</p>
+            <p className="text-sm text-red-500 after:content-['！']">
+              {state.errorMessage}
+            </p>
           ) : (
             <>
               <p className="mb-0">目標のレベルに必要な経験値は</p>
