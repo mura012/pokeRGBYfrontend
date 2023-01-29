@@ -1,6 +1,7 @@
+import { PokemonTypes } from "types/pokemonType";
+
 export const useTypeCheck = () => {
-  const typeCheck = (type: string | undefined) => {
-    if (type === undefined) return;
+  const typeCheck = (type: PokemonTypes) => {
     if (type === "ノーマル") return "bg-gray-300";
     if (type === "ほのお") return "bg-red-500";
     if (type === "みず") return "bg-blue-600";
