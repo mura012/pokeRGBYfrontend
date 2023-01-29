@@ -42,7 +42,7 @@ type Action =
       levelType: number;
     };
 
-const reducer = (state: any, action: Action) => {
+const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case "error":
       return {
