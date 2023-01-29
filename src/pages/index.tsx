@@ -16,7 +16,7 @@ type Blog = {
   badge: string;
 };
 
-const Home: NextPage<MicroCMSListResponse<Blog>> = (props) => {
+const Home: NextPage<MicroCMSListResponse<Blog>> = ({ contents }) => {
   return (
     <Layout title="ホーム">
       {links
@@ -43,7 +43,7 @@ const Home: NextPage<MicroCMSListResponse<Blog>> = (props) => {
           );
         })}
       <div className="relative m-2 rounded border-2 border-solid p-5 before:absolute before:left-2 before:-top-2 before:bg-gray-50 before:pl-3 before:font-bold before:content-['ポケモンに関するブログも書いています。']">
-        {props.contents
+        {contents
           .filter((blog) => blog.badge[0] === "ポケモン")
           .map((blog) => {
             return (

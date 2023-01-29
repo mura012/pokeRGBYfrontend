@@ -10,7 +10,7 @@ type QA = {
   test: string;
 };
 
-const Qa: NextPage<MicroCMSListResponse<QA>> = (props) => {
+const Qa: NextPage<MicroCMSListResponse<QA>> = ({ contents }) => {
   return (
     <Layout title="Q&A">
       <div className="m-auto">
@@ -18,7 +18,7 @@ const Qa: NextPage<MicroCMSListResponse<QA>> = (props) => {
           ポケモン赤緑青ピカチューについて気になって調べたことをQ&A形式で掲載しています。
         </h3>
         <Accordion defaultValue="itibansoto" variant="contained">
-          {props.contents.map((item) => {
+          {contents.map((item) => {
             return (
               <Accordion.Item value={item.question} key={item.question}>
                 <Accordion.Control>{item.question}</Accordion.Control>
