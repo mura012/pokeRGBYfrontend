@@ -1,8 +1,10 @@
+import { PokemonTypes } from "./pokemonType";
+
 export type Pokemon = {
   number: number;
   name: string;
-  typeA: string;
-  typeB?: string;
+  typeA: PokemonTypes;
+  typeB?: PokemonTypes;
   point: number;
   evolutionLevel?: number;
   afterEvolution?: string;
