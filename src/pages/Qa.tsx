@@ -7,7 +7,6 @@ import { GetStaticProps, NextPage } from "next";
 type QA = {
   question: string;
   answer: string;
-  test: string;
 };
 
 const Qa: NextPage<MicroCMSListResponse<QA>> = ({ contents }) => {
@@ -17,7 +16,7 @@ const Qa: NextPage<MicroCMSListResponse<QA>> = ({ contents }) => {
         <h3 className="text-center">
           ポケモン赤緑青ピカチューについて気になって調べたことをQ&A形式で掲載しています。
         </h3>
-        <Accordion defaultValue="itibansoto" variant="contained">
+        <Accordion variant="contained">
           {contents.map((item) => {
             return (
               <Accordion.Item value={item.question} key={item.question}>

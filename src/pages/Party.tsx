@@ -7,6 +7,7 @@ import { useTypeCheck } from "fooks/useTypeCheck";
 import { PokemonTypes } from "types/pokemonType";
 import { Layout } from "layout";
 import Image from "next/image";
+import { Button } from "@mantine/core";
 
 type Types = {
   type: PokemonTypes;
@@ -142,7 +143,15 @@ const Party = ({ pokemonData }: { pokemonData: PokemonType }) => {
           setSelected={setSelected}
           pokemonData={pokemonData}
         />
-        <button onClick={handleAdd}>追加</button>
+        <Button
+          onClick={handleAdd}
+          radius="xl"
+          size="md"
+          color="dark"
+          className="ml-1"
+        >
+          追加
+        </Button>
       </div>
       <ul className="my-2 flex flex-wrap border border-solid border-black bg-white p-2">
         {pokemonsList.length === 0 ? (

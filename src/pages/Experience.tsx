@@ -1,4 +1,4 @@
-import { NumberInput } from "@mantine/core";
+import { Button, NumberInput } from "@mantine/core";
 import { PokemonSearch } from "components/pokemonsSearch";
 import { Layout } from "layout";
 import { useReducer, useState } from "react";
@@ -168,10 +168,10 @@ const Experience = ({ pokemonData }: { pokemonData: PokemonType }) => {
             value={state.levelType}
             disabled
           />
-          <p>万タイプ</p>
+          <p className="flex items-center">万タイプ</p>
         </div>
         <label>
-          <p className="flex justify-center">現在のレベル</p>
+          <p className="mb-0 flex justify-center">現在のレベル</p>
           <NumberInput
             placeholder="1~99"
             type="number"
@@ -185,7 +185,7 @@ const Experience = ({ pokemonData }: { pokemonData: PokemonType }) => {
           />
         </label>
         <label>
-          <p className="flex justify-center">目標のレベル</p>
+          <p className="mb-0 flex justify-center">目標のレベル</p>
           <div className="relative">
             <NumberInput
               placeholder="2~100"
@@ -195,8 +195,8 @@ const Experience = ({ pokemonData }: { pokemonData: PokemonType }) => {
                 dispatch({ type: "target", target: e });
               }}
               min={1}
-              stepHoldDelay={500}
-              stepHoldInterval={100}
+              stepHoldDelay={200}
+              stepHoldInterval={50}
             />
             <button
               onClick={() => {
@@ -208,22 +208,25 @@ const Experience = ({ pokemonData }: { pokemonData: PokemonType }) => {
             </button>
           </div>
         </label>
-        <button
+        <Button
+          radius="xl"
+          size="md"
+          color="dark"
           onClick={() => {
             handleSearch(selected, state.currentLevel, state.targetLevel);
           }}
           className="absolute right-4 bottom-4 py-2 px-3"
         >
           検索
-        </button>
+        </Button>
         <div className="pb-6">
           {state.errorMessage ? (
-            <p className="text-sm text-red-500 after:content-['！']">
+            <p className="mt-4 text-sm text-red-500 after:content-['！']">
               {state.errorMessage}
             </p>
           ) : (
             <>
-              <p className="mb-0">目標のレベルに必要な経験値は</p>
+              <p className="mb-0 mt-4">目標のレベルに必要な経験値は</p>
               <p className="mt-0">{`約${state.needLevel}です`}</p>
             </>
           )}
