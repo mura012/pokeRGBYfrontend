@@ -1,3 +1,4 @@
+import { BlogData } from "components/blogData";
 import { Layout } from "layout";
 import { blogClient } from "libs/blogClient";
 import { links } from "libs/links";
@@ -5,16 +6,7 @@ import { MicroCMSListResponse } from "microcms-js-sdk";
 import { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
-type Blog = {
-  id: string;
-  image: {
-    url: string;
-  };
-  title: string;
-  body: string;
-  badge: string;
-};
+import { Blog } from "types/blog";
 
 const Home: NextPage<MicroCMSListResponse<Blog>> = ({ contents }) => {
   return (
@@ -43,21 +35,7 @@ const Home: NextPage<MicroCMSListResponse<Blog>> = ({ contents }) => {
           );
         })}
       <div className="relative m-2 rounded border-2 border-solid p-5 before:absolute before:left-2 before:-top-2 before:bg-gray-50 before:pl-3 before:font-bold before:content-['ポケモンに関するブログも書いています。']">
-        {contents
-          .filter((blog) => blog.badge[0] === "ポケモン")
-          .map((blog) => {
-            return (
-              <div className="w-fit" key={blog.id}>
-                <Link
-                  href={`https://www.mura-mostlove.com/blogPage/${blog.id}`}
-                >
-                  <p className="mx-0 my-1 w-fit text-base text-blue-500 underline hover:text-red-500">
-                    {blog.title}
-                  </p>
-                </Link>
-              </div>
-            );
-          })}
+        <BlogData contents={contents} />
       </div>
     </Layout>
   );

@@ -16,8 +16,10 @@ export const Layout = ({ children, title = "ぽけRGBY" }: Props) => {
       </Head>
       <div className="flex min-h-screen flex-col bg-gray-200">
         <Header />
-        <div className="m-auto flex-1 bg-gray-50 px-2 shadow-xl sm:w-3/5">
-          {children}
+        <div className="flex flex-1">
+          <div className="flex-1 bg-gray-300" />
+          <div className="flex-[3] bg-gray-50 px-2 shadow-xl">{children}</div>
+          <div className="flex-1 bg-gray-300" />
         </div>
         <Footer />
       </div>
